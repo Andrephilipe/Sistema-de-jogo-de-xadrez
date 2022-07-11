@@ -1,11 +1,11 @@
 package xadrez.src.application;
 
-import xadrez.src.boardgame.Position;
+import xadrez.src.boardgame.Board;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Position pos = new Position(3, 5);
-        System.out.println(pos);
+       
+        Board board = new Board(8, 8);
     }
 }
 
