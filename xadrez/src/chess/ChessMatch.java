@@ -1,7 +1,6 @@
 package xadrez.src.chess;
 
 import xadrez.src.boardgame.Board;
-import xadrez.src.boardgame.Position;
 import xadrez.src.chess.pieces.King;
 import xadrez.src.chess.pieces.Rook;
 
@@ -23,9 +22,13 @@ public class ChessMatch {
         }
         return mat;
     }
+
+    private void placeNewPiece(char column, int row, ChessPiece piece){
+        board.piecePiece(piece, new ChessPosition(column, row).toPosition());
+    }
     private void initialSetup(){
-        board.piecePiece(new Rook(board, Color.WHITE), new Position(2, 1));
-        board.piecePiece(new King(board, Color.BLACK), new Position(0, 4));
-        board.piecePiece(new King(board, Color.WHITE), new Position(7, 4));
+        placeNewPiece('b', 6, new Rook(board, Color.WHITE));
+        placeNewPiece('e', 8, new King(board, Color.BLACK));
+        placeNewPiece('e', 1, new King(board, Color.WHITE));
     }
 }
