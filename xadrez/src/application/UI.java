@@ -1,6 +1,12 @@
 package xadrez.src.application;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+import org.w3c.dom.ranges.RangeException;
+
 import xadrez.src.chess.ChessPiece;
+import xadrez.src.chess.ChessPosition;
 import xadrez.src.chess.Color;
 
 public class UI {
@@ -23,6 +29,19 @@ public class UI {
 	public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+
+    public static ChessPosition readChessPosition(Scanner sc){
+        try{
+            String s = sc.nextLine();
+            char column = s.charAt(0);
+            int row = Integer.parseInt(s.substring(1));
+            return new ChessPosition(column, row);
+
+        }catch(RangeException e ){
+            throw new InputMismatchException("Erro reading ChessPosition: valid values are from at to h8.");
+        }
+
+    }
     
     public static void printBoard(ChessPiece[][] pieces){
         for (int i=0; i<pieces.length; i++){
